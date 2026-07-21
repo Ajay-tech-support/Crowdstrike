@@ -1,0 +1,1 @@
+FalconSensor_Windows.exe /install /quiet /norestart CID=FD6D59D591234393A0A86AEF047E237F-19

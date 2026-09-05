@@ -1,1 +1,12 @@
+sources:
+  fortigate_syslog:
+    type: syslog
+    mode: udp
+    port: 1514
+    sink: ngsiem
 
+sinks:
+  ngsiem:
+    type: hec
+    token: e79c3497b376426fbb63c59f8296d86b
+    url: https://ingest.us-2.crowdstrike.com/api/ingest/hec/66e45fed48dc439c80342f68a0d9581d/v1/services/collector

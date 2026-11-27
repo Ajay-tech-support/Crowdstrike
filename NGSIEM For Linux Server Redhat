@@ -18,7 +18,7 @@ sudo firewall-cmd --reload
 
 sudo systemctl status firewalld
 
-sudo vi /etc/rsyslog.d/90-crowdstrike.conf
+sudo vim /etc/rsyslog.d/90-crowdstrike.conf
 
 *.* @127.0.0.1:1516
 sudo systemctl enable rsyslog

@@ -1,0 +1,28 @@
+sources:
+  linux_syslog:
+    type: syslog
+    mode: udp
+    port: 1516
+    sink: ngsiem
+
+sinks:
+  ngsiem:
+    type: hec
+    token: YOUR_HEC_TOKEN
+    url: https://9a4642c27706486dbb042cd05907df3e.ingest.us-2.crowdstrike.com/services/collector
+
+
+sudo firewall-cmd --permanent --add-port=1516/udp
+
+sudo firewall-cmd --reload
+
+sudo systemctl status firewalld
+
+sudo vi /etc/rsyslog.d/90-crowdstrike.conf
+
+*.* @127.0.0.1:1516
+sudo systemctl enable rsyslog
+sudo systemctl restart rsyslog
+sudo systemctl status rsyslog
+sudo rsyslogd -N1
+sudo tcpdump -ni any udp port 1516
